@@ -1,0 +1,11 @@
+//for dependency Injection Container
+Install-Package Ninject -version 3.0.1.10 -projectname IMDB.WebUI
+Install-Package Ninject.Web.Common -version 3.0.0.7 -projectname IMDB.WebUI
+Install-Package Ninject.MVC3 -Version 3.0.0.6 -projectname IMDB.WebUI
+Install-Package Ninject -version 3.0.1.10 -projectname IMDB.UnitTests
+Install-Package Ninject.Web.Common -version 3.0.0.7 -projectname IMDB.UnitTests
+Install-Package Ninject.MVC3 -Version 3.0.0.6 -projectname IMDB.UnitTests
+
+//for asp.net requirements
+Install-Package Microsoft.Aspnet.Mvc -version 5.0.0 -projectname IMDB.Domain
+Install-Package Microsoft.Aspnet.Mvc -version 5.0.0 -projectname IMDB.UnitTests
