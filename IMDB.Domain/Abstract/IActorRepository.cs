@@ -5,7 +5,7 @@ using IMDB.Domain.Entities;
 
 namespace IMDB.Domain.Abstract
 {
-    public interface IActorsRepository
+    public interface IActorRepository
     {
         IEnumerable<Actor> Actors { get; }
     }
