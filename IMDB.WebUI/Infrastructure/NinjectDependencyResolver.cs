@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ninject;
+using IMDB.Domain.Concrete;
+using IMDB.Domain.Entities;
+using IMDB.Domain.Abstract;
 
 namespace IMDB.WebUI.Infrastructure
 {
@@ -23,7 +26,7 @@ namespace IMDB.WebUI.Infrastructure
         }
         private void AddBindings()
         {
-            // put bindings here
+            kernel.Bind<IActorRepository>().To<EFActorRepository>();
         }
     }
 }

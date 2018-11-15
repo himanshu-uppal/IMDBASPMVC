@@ -9,7 +9,7 @@ namespace IMDB.Domain.Entities
         public int ID { get; set; }
         public string Name { get; set; }
         public char Sex { get; set; }
-        public DateTime Data { get; set; }
+        public DateTime DOB { get; set; }
         public string Bio { get; set; }
     }
 }

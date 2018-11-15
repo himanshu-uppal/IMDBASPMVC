@@ -1,8 +1,19 @@
-﻿@model IMDB.Domain.Entities.Actor
+﻿
+@using IMDB.Domain.Entities
+@model IEnumerable<Actor>
 
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+@foreach(var actor in Model)
+{
+<div>
+    <h3>@actor.Name</h3>
+    <div>--@actor.Sex</div>
+    <div>@actor.Bio</div>
+    <div>@actor.ID</div>
+    <div>@actor.DOB</div>
+</div>
+}
 
