@@ -34,7 +34,7 @@ namespace IMDB.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Actors.Count()
+                    TotalItems = category == null ? repository.Actors.Count() : repository.Actors.Where(e=>e.Category == category).Count()
                 },
                 CurrentCategory = category
             };
