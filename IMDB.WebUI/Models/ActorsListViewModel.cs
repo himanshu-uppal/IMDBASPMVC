@@ -10,6 +10,7 @@ namespace IMDB.WebUI.Models
     {
         public IEnumerable<Actor> Actors { get; set; }
         public PagingInfo PagingInformation { get; set; }
+        public string CurrentCategory { get; set; }
         
     }
 }

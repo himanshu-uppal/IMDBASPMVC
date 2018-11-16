@@ -20,12 +20,13 @@ namespace IMDB.WebUI.Controllers
 
         }
         
-        public ViewResult List(int page=1)
+        public ViewResult List(string category,int page=1)
         {
             ActorsListViewModel actorsModel = new ActorsListViewModel
             {
                 Actors = repository.Actors.
-                OrderBy(p => p.ID).
+                Where(a => category == null || a.Category == category).
+                OrderBy(a => a.ID).
                 Skip((page - 1) * PageSize).
                 Take(PageSize),
 
@@ -34,7 +35,8 @@ namespace IMDB.WebUI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = repository.Actors.Count()
-                }
+                },
+                CurrentCategory = category
             };
 
             return View(actorsModel);

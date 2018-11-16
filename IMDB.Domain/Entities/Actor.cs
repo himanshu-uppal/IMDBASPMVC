@@ -11,5 +11,6 @@ namespace IMDB.Domain.Entities
         public char Sex { get; set; }
         public DateTime DOB { get; set; }
         public string Bio { get; set; }
+        public string Category { get; set; }
     }
 }
