@@ -1,19 +1,24 @@
 ﻿
-@using IMDB.Domain.Entities
-@model IEnumerable<Actor>
+@model IMDB.WebUI.Models.ActorsListViewModel
+@using IMDB.WebUI.HtmlHelpers
+
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Actors";
 }
 
-@foreach(var actor in Model)
+@foreach (var actor in Model.Actors)
 {
-<div>
-    <h3>@actor.Name</h3>
-    <div>--@actor.Sex</div>
-    <div>@actor.Bio</div>
-    <div>@actor.ID</div>
-    <div>@actor.DOB</div>
-</div>
+    <div>
+        <h3>@actor.Name</h3>
+        <div>--@actor.Sex</div>
+        <div>@actor.Bio</div>
+        <div>@actor.ID</div>
+        <div>@actor.DOB</div>
+    </div>
 }
+
+<div>
+    @Html.PageLinks(Model.PagingInformation, x => Url.Action("List", new { page = x }))
+</div>
 

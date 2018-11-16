@@ -13,7 +13,7 @@ namespace IMDB.Domain.Concrete
         private EFDbContext context = new EFDbContext();
         public IEnumerable<Actor> Actors
         {
-            get { return context.Actors; }
+            get {return context.Actors; }
         }
     }
 }
