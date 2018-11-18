@@ -1,0 +1,17 @@
+﻿@model IMDB.Domain.Entities.Cart
+
+@{
+    ViewBag.Title = "Summary";
+}
+<h2>Summary</h2>
+
+<div class="navbar-right">
+    @Html.ActionLink("Checkout", "Index", "Cart",
+    new { returnUrl = Request.Url.PathAndQuery },
+    new { @class = "btn btn-default navbar-btn" })
+</div>
+<div class="navbar-text navbar-right">
+    <b>Your cart:</b>
+    @Model.Lines.Sum(a => { if (a.RoleCount == 1) { return a.Actor.ChargePerMovie; } else { return a.Actor.ChargePerMovie + a.Actor.ChargePerRole * a.RoleCount; } }),
+    @Model.ComputeTotalValue().ToString("c")
+</div>

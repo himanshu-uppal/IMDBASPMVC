@@ -18,23 +18,33 @@
     <tbody>
         @foreach (var line in Model.Cart.Lines)
         {
-            <tr>
-                <td class="text-center">@line.RoleCount</td>
-                <td class="text-left">@line.Actor.Name</td>
-                <td class="text-right">@line.Actor.ChargePerMovie.ToString("c")</td>
-                <td class="text-right">
-                    @if (line.RoleCount == 1)
-                    {
-                        @((line.Actor.ChargePerMovie).ToString("c"))
-                    }
-                    else {
+        <tr>
+            <td class="text-center">@line.RoleCount</td>
+            <td class="text-left">@line.Actor.Name</td>
+            <td class="text-right">@line.Actor.ChargePerMovie.ToString("c")</td>
+            <td class="text-right">
+                @if (line.RoleCount == 1)
+                {
+                    @((line.Actor.ChargePerMovie).ToString("c"))
+                }
+                else
+                {
 
-                        @((line.RoleCount * line.Actor.ChargePerRole+line.Actor.ChargePerMovie).ToString("c"))
+                    @((line.RoleCount * line.Actor.ChargePerRole + line.Actor.ChargePerMovie).ToString("c"))
 
-                    }
+                }
 
-                </td>
-            </tr>
+            </td>
+            <td>
+                @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+                    @Html.Hidden("actorId", line.Actor.ID)
+                    @Html.HiddenFor(x => x.ReturnUrl)
+                    <input class="btn btn-sm btn-warning"
+                           type="submit" value="Remove" />
+                }
+            </td>
+        </tr>
         }
     </tbody>
     <tfoot>
