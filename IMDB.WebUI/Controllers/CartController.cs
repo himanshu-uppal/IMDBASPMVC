@@ -12,9 +12,12 @@ namespace IMDB.WebUI.Controllers
     public class CartController : Controller
     {
         private IActorRepository actorRepository;
-        public CartController(IActorRepository actorRepository)
+        private IOrderProcessor orderProcessor;
+
+        public CartController(IActorRepository actorRepository, IOrderProcessor proc)
         {
             this.actorRepository = actorRepository;
+            this.orderProcessor = proc;
         }
         public ViewResult Index(Cart cart,string returnUrl)
         {
@@ -66,6 +69,25 @@ namespace IMDB.WebUI.Controllers
         public ViewResult Checkout()
         {
             return View(new ShippingDetails());
+        }
+
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (cart.Lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "Sorry, your cart is empty!");
+            }
+            if (ModelState.IsValid)
+            {
+                orderProcessor.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
         }
     }
 }

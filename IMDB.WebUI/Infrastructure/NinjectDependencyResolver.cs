@@ -7,6 +7,7 @@ using Ninject;
 using IMDB.Domain.Concrete;
 using IMDB.Domain.Entities;
 using IMDB.Domain.Abstract;
+using System.Configuration;
 
 namespace IMDB.WebUI.Infrastructure
 {
@@ -27,6 +28,14 @@ namespace IMDB.WebUI.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IActorRepository>().To<EFActorRepository>();
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager
+ .AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
+            .WithConstructorArgument("settings", emailSettings);
         }
     }
 }
