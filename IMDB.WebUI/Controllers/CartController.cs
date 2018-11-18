@@ -16,33 +16,33 @@ namespace IMDB.WebUI.Controllers
         {
             this.actorRepository = actorRepository;
         }
-        public ViewResult Index(string returnUrl)
+        public ViewResult Index(Cart cart,string returnUrl)
         {
             return View(new CartIndexViewModel
             {
-                Cart = GetCart(),
+                Cart = cart,
                 ReturnUrl = returnUrl
             });
         }
 
-        public RedirectToRouteResult AddToCart(int actorId, string returnUrl)
+        public RedirectToRouteResult AddToCart(Cart cart,int actorId, string returnUrl)
         {
             Actor actor = actorRepository.Actors
             .FirstOrDefault(a => a.ID == actorId);
             if (actor != null)
             {
-                GetCart().AddItem(actor, 1);
+                cart.AddItem(actor, 1);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoveFromCart(int actorId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Cart cart,int actorId, string returnUrl)
         {
             Actor actor = actorRepository.Actors
             .FirstOrDefault(a => a.ID == actorId);
             if (actor != null)
             {
-                GetCart().RemoveLine(actor);
+                cart.RemoveLine(actor);
             }
             return RedirectToAction("Index", new { returnUrl });
         }

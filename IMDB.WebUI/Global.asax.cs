@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using IMDB.Domain.Entities;
+using IMDB.WebUI.Infrastructure.Binders;
 
 namespace IMDB.WebUI
 {
@@ -13,6 +15,7 @@ namespace IMDB.WebUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }
