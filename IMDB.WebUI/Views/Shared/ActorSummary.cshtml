@@ -1,0 +1,25 @@
+﻿@model IMDB.Domain.Entities.Actor
+
+@{
+    ViewBag.Title = "ActorSummary";
+}
+
+<h2>ActorSummary</h2>
+
+<div>
+    <h3>@Model.Name</h3>
+
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div>
+            @Html.HiddenFor(a => a.ID)
+            @Html.Hidden("returnUrl",Request.Url.PathAndQuery)
+            <input type="submit" value="Add to Movie" />
+
+        </div>
+
+    }
+
+    <span >@Model.Bio</span>
+</div>
+

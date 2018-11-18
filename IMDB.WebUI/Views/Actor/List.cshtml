@@ -16,9 +16,22 @@
         <div>@actor.ID</div>
         <div>@actor.DOB</div>
     </div>
+    <div>
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            <div>
+                @Html.Hidden("actorId",actor.ID)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" value="Add to Movie" />
+
+            </div>
+
+        }
+    </div>
+    
 }
 
-    <div>
-          @Html.PageLinks(Model.PagingInformation, x => Url.Action("List", new { page = x,category = Model.CurrentCategory }))
-    </div>
+<div>
+    @Html.PageLinks(Model.PagingInformation, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>
 

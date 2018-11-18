@@ -12,5 +12,7 @@ namespace IMDB.Domain.Entities
         public DateTime DOB { get; set; }
         public string Bio { get; set; }
         public string Category { get; set; }
+        public decimal ChargePerMovie { get; set; }
+        public decimal ChargePerRole { get; set; }
     }
 }
