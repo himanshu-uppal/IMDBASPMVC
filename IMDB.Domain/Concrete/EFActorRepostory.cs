@@ -37,5 +37,16 @@ namespace IMDB.Domain.Concrete
             }
             context.SaveChanges();
         }
+
+        public Actor DeleteActor(int actorID)
+        {
+            Actor dbEntry = context.Actors.Find(actorID);
+            if (dbEntry != null)
+            {
+                context.Actors.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }

@@ -45,5 +45,17 @@ namespace IMDB.WebUI.Controllers
         {
             return View("Edit", new Actor());
         }
+
+        [HttpPost]
+        public ActionResult Delete(int actorID)
+        {
+            Actor deletedActor = repository.DeleteActor(actorID);
+            if (deletedActor != null)
+            {
+                TempData["message"] = string.Format("{0} was deleted",
+                deletedActor.Name);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

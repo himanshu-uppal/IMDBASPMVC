@@ -9,6 +9,7 @@ namespace IMDB.Domain.Abstract
     {
         IEnumerable<Actor> Actors { get; }
         void SaveActor(Actor actor);
+        Actor DeleteActor(int actorID);
     }
 
     
