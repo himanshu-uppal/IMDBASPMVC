@@ -20,10 +20,10 @@ namespace IMDB.WebUI.Controllers
         {
             return View(repository.Actors);
         }
-        public ViewResult Edit(int actorId)
+        public ViewResult Edit(int ID)
         {
             Actor actor = repository.Actors
-            .FirstOrDefault(a => a.ID == actorId);
+            .FirstOrDefault(a => a.ID == ID);
             return View(actor);
         }
         [HttpPost]

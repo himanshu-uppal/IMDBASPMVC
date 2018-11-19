@@ -10,7 +10,7 @@ namespace IMDB.Domain.Entities
 {
     public class Actor  //as the domain model is in different VS project, it mut be marked as public
     {
-        [HiddenInput(DisplayValue = false)]
+       
         public int ID { get; set; }
         [Required(ErrorMessage = "Please enter a actor name")]
         public string Name { get; set; }

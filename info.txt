@@ -14,3 +14,8 @@ Install-Package Microsoft.Aspnet.Mvc -version 5.0.0 -projectname IMDB.UnitTests
 //installing Entity Framework
 Install-Package EntityFramework -projectname IMDB.Domain
 Install-Package EntityFramework -projectname IMDB.WebUI
+
+
+//enabling client side validations 
+Install-Package Microsoft.jQuery.Unobtrusive.Validation -version 3.0.0
+ -projectname IMDB.WebUI

@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Edit " + Model.Name;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <!-- HtmlHelper.ClientValidationEnabled = false; //for disabling client side validation
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = false; -->
 }
 <div class="panel">
     <div class="panel-heading">
@@ -14,7 +16,7 @@
             @Html.HiddenFor(m => m.ID)
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
-                if (property.PropertyName != "ProductID")
+                if (property.PropertyName != "ID")
                 {
             <div class="form-group">
                 <label>@(property.DisplayName ?? property.PropertyName)</label>
