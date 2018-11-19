@@ -15,5 +15,27 @@ namespace IMDB.Domain.Concrete
         {
             get {return context.Actors; }
         }
+        public void SaveActor(Actor actor)
+        {
+            if (actor.ID == 0)
+            {
+                context.Actors.Add(actor);
+            }
+            else
+            {
+                Actor dbEntry = context.Actors.Find(actor.ID);
+                if (dbEntry != null)
+                {
+                    dbEntry.Name = actor.Name;
+                    dbEntry.Sex = actor.Sex;
+                    dbEntry.DOB = actor.DOB;
+                    dbEntry.Bio = actor.Bio;                    
+                    dbEntry.Category = actor.Category;
+                    dbEntry.ChargePerMovie = actor.ChargePerMovie;
+                    dbEntry.ChargePerRole = actor.ChargePerRole;
+                }
+            }
+            context.SaveChanges();
+        }
     }
 }
