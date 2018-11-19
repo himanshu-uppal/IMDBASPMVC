@@ -41,5 +41,9 @@ namespace IMDB.WebUI.Controllers
                 return View(actor);
             }
         }
+        public ViewResult Create()
+        {
+            return View("Edit", new Actor());
+        }
     }
 }
