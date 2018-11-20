@@ -8,6 +8,7 @@ using IMDB.Domain.Entities;
 
 namespace IMDB.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IActorRepository repository;

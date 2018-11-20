@@ -8,6 +8,8 @@ using IMDB.Domain.Concrete;
 using IMDB.Domain.Entities;
 using IMDB.Domain.Abstract;
 using System.Configuration;
+using IMDB.WebUI.Infrastructure.Abstract;
+using IMDB.WebUI.Infrastructure.Concrete;
 
 namespace IMDB.WebUI.Infrastructure
 {
@@ -36,6 +38,7 @@ namespace IMDB.WebUI.Infrastructure
             };
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
             .WithConstructorArgument("settings", emailSettings);
-        }
+            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
+        }        
     }
 }
